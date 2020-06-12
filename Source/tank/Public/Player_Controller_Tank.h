@@ -22,5 +22,17 @@ public:
 	APawn_Tank_Player* GetControlledTank() const;
 
 	virtual void BeginPlay() override;
-	
+	virtual void Tick(float deltatime) override;
+	//Startmoving the barrel so that a shot would hit crosshair intersects the world
+	void AimTowardsCrosshair();
+	bool GetSightRayHitLocation(FVector& OutHitLocation) const;
+	bool GetLookDirection(FVector2D ScreenLocation, FVector& LookDirection) const;
+	bool GetLookVectorHitLocation(FVector LookDirection, FVector& HitLocation) const;
+
+	UPROPERTY(EditAnywhere)
+		float CrosshairXLoc = 0.5;
+	UPROPERTY(EditAnywhere)
+		float CrosshairYLoc = 0.33333;
+	UPROPERTY(EditAnywhere)
+		float LineTraceRange = 1000000;
 };

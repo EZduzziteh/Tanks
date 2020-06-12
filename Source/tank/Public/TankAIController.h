@@ -17,8 +17,9 @@ class TANK_API ATankAIController : public AAIController
 	
 public:
 	APawn_Tank_Player* GetControlledTank() const;
+	virtual void Tick(float deltatime) override;
 
 	virtual void BeginPlay() override;
-
+	APawn_Tank_Player* GetPlayerTank() const;
 };
 
