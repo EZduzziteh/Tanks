@@ -13,7 +13,7 @@ APawn_Tank_Player::APawn_Tank_Player()
 
 }
 
-void APawn_Tank_Player::SetBarrelReference(UStaticMeshComponent* BarrelToSet) {
+void APawn_Tank_Player::SetBarrelReference(UTankBarrel* BarrelToSet) {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
 
