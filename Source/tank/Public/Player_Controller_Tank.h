@@ -3,15 +3,13 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Pawn_Tank_Player.h"
-
 #include "GameFramework/PlayerController.h"
-
 #include "Player_Controller_Tank.generated.h"
 
-/**
- * 
- */
+//forward declarations
+class APawn_Tank_Player;
+
+ 
 UCLASS()
 class TANK_API APlayer_Controller_Tank : public APlayerController
 {

@@ -2,6 +2,7 @@
 
 
 #include "Pawn_Tank_Player.h"
+#include "TankAimingComponent.h"
 
 // Sets default values
 APawn_Tank_Player::APawn_Tank_Player()

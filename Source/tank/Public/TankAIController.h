@@ -4,12 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "AIController.h"
-#include "Pawn_Tank_Player.h"
 #include "TankAIController.generated.h"
 
-/**
- * 
- */
+//forward declarataions
+class APawn_Tank_Player;
+
 UCLASS()
 class TANK_API ATankAIController : public AAIController
 {
