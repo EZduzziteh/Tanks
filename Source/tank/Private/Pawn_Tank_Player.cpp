@@ -17,6 +17,16 @@ APawn_Tank_Player::APawn_Tank_Player()
 void APawn_Tank_Player::SetBarrelReference(UTankBarrel* BarrelToSet) {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
 }
+void APawn_Tank_Player::SetTurretReference(UTankTurret* TurretToSet) {
+	TankAimingComponent->SetTurretReference(TurretToSet);
+}
+
+void APawn_Tank_Player::Fire()
+{
+	auto Time = GetWorld()->GetTimeSeconds();
+	
+	UE_LOG(LogTemp, Warning, TEXT("%f: Fire"), Time);
+}
 
 // Called when the game starts or when spawned
 void APawn_Tank_Player::BeginPlay()

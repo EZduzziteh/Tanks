@@ -8,7 +8,6 @@
 void APlayer_Controller_Tank::BeginPlay() {
 
 	Super::BeginPlay();
-	UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play"));
 	APlayer_Controller_Tank::GetControlledTank();
 }
 
@@ -59,8 +58,7 @@ bool APlayer_Controller_Tank::GetSightRayHitLocation(FVector& OutHitLocation) co
 	
 	FVector LookDirection;		
 	if (GetLookDirection(ScreenLocation, LookDirection)) {
-		//UE_LOG(LogTemp, Warning, TEXT("Look Direction: %s"), *LookDirection.ToString());
-		GetLookVectorHitLocation(LookDirection, OutHitLocation);
+	GetLookVectorHitLocation(LookDirection, OutHitLocation);
 	}
 	return true;
 }

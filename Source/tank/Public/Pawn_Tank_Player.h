@@ -9,6 +9,7 @@
 
 // forward declarations
 class UTankBarrel; 
+class UTankTurret;
 class UTankAimingComponent;
 
 UCLASS()
@@ -17,10 +18,18 @@ class TANK_API APawn_Tank_Player : public APawn
 	GENERATED_BODY()
 
 public:
-	void AimAt(FVector HitLocation);
+	
+	//references
 	UFUNCTION(BlueprintCallable, Category=Setup)
 	void SetBarrelReference(UTankBarrel* BarrelToSet);
+	UFUNCTION(BlueprintCallable, Category = Setup)
+	void SetTurretReference(UTankTurret* BarrelToSet);
 
+
+	UFUNCTION(BlueprintCallable, Category = Input	)
+	void Fire();
+
+	void AimAt(FVector HitLocation);
 
 protected: 
 	UTankAimingComponent* TankAimingComponent = nullptr;
