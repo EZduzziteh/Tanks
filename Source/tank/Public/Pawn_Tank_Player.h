@@ -9,7 +9,9 @@
 
 // forward declarations
 class UTankBarrel; 
+class AProjectile;
 class UTankTurret;
+
 class UTankAimingComponent;
 
 UCLASS()
@@ -39,6 +41,18 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 100000;
+
+	UPROPERTY(EditAnywhere, Category = Firing)
+		float ReloadTime= 1;
+
+
+		double LastFireTime = 0;
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	//local barel ref for spawning projectile
+	UTankBarrel* Barrel = nullptr;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

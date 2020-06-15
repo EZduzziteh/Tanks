@@ -2,7 +2,10 @@
 
 
 #include "Pawn_Tank_Player.h"
+#include "TankBarrel.h"
+#include "Projectile.h"
 #include "TankAimingComponent.h"
+
 
 // Sets default values
 APawn_Tank_Player::APawn_Tank_Player()
@@ -16,6 +19,7 @@ APawn_Tank_Player::APawn_Tank_Player()
 
 void APawn_Tank_Player::SetBarrelReference(UTankBarrel* BarrelToSet) {
 	TankAimingComponent->SetBarrelReference(BarrelToSet);
+	Barrel = BarrelToSet;
 }
 void APawn_Tank_Player::SetTurretReference(UTankTurret* TurretToSet) {
 	TankAimingComponent->SetTurretReference(TurretToSet);
@@ -23,9 +27,21 @@ void APawn_Tank_Player::SetTurretReference(UTankTurret* TurretToSet) {
 
 void APawn_Tank_Player::Fire()
 {
-	auto Time = GetWorld()->GetTimeSeconds();
+	bool isReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTime;
+	if (Barrel&&isReloaded) {
+
+		//spawn projectile at barrel launch location
+
+		auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, Barrel->GetSocketLocation(FName("Projectile")), Barrel->GetSocketRotation(FName("Projectile")));
+		Projectile->LaunchProjectile(LaunchSpeed);
+		LastFireTime = FPlatformTime::Seconds();
+
 	
-	UE_LOG(LogTemp, Warning, TEXT("%f: Fire"), Time);
+	}
+	else {
+	
+		return;
+	}
 }
 
 // Called when the game starts or when spawned
